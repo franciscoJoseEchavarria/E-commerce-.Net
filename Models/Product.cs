@@ -13,7 +13,7 @@ namespace NuevoProyecto.API.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        public string Category { get; set; }
+        public Category Category { get; set; }
 
         // Implementación del método abstracto
         public override bool IsValid()
