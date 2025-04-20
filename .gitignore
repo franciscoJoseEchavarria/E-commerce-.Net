@@ -1,0 +1,91 @@
+# Archivos y carpetas específicos de .NET Core
+*.swp
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Carpetas de compilación y caché
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Archivos de Visual Studio
+.vs/
+.vscode/
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Rider
+.idea/
+*.sln.iml
+
+# Archivos de usuario
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Caché de NuGet
+*.nuget.props
+*.nuget.targets
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Archivos de build de Visual Studio
+**/[Bb]uild/[Bb]ackup*/
+
+# Archivos de migración de Entity Framework
+**/[Mm]igrations/*.Designer.cs
+**/[Mm]igrations/*.cs
+!**/[Mm]igrations/Configuration.cs
+
+# Local appsettings
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+!appsettings.Example.json
+
+# Archivos de publicación
+**/[Pp]ublish/
+**/[Pp]ublished/
+
+# SQL Server archivos
+*.mdf
+*.ldf
+*.ndf
+
+# Archivos de node para posible frontend
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Archivos de OS específicos
+.DS_Store
+Thumbs.db
