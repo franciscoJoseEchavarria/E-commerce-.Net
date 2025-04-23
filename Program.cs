@@ -1,3 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using NuevoProyecto.API.Data;
+using NuevoProyecto.API.Interface;
+using NuevoProyecto.API.IServices;
+using NuevoProyecto.API.Models;
+using NuevoProyecto.API.Repository;
+using NuevoProyecto.API.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -12,8 +21,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// PostgreSQL configuration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     
 // Register repositories
 builder.Services.AddScoped<IRepository<Users>, UserRepository>();
@@ -24,8 +34,18 @@ builder.Services.AddScoped<IUserService, UserServices>();
 // Make sure controllers are registered
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 
 var app = builder.Build();
+
+// Now you can use app
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -35,6 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 // Keep your existing WeatherForecast endpoint for now
 var summaries = new[]

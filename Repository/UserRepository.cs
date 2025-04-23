@@ -2,15 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuevoProyecto.API.Models;
+using NuevoProyecto.API.Data;
+using NuevoProyecto.API.Interface;
 
 namespace NuevoProyecto.API.Repository
 {
-    public class UserRepository
+    public class UserRepository: IRepository<Users>
     {
         
           private readonly ApplicationDbContext _context;
         
-        public UsersRepository(ApplicationDbContext context)
+        public UserRepository(ApplicationDbContext context)
         {
             _context = context;
         }

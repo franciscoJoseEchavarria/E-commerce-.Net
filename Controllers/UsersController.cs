@@ -2,12 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using NuevoProyecto.API.Models;
+using NuevoProyecto.API.Services;
+
+using NuevoProyecto.API.IServices;
+using NuevoProyecto.API.DTO;
 
 namespace NuevoProyecto.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController
+    public class UsersController:ControllerBase
     {
        private readonly IUserService _userService;
 
@@ -37,7 +43,7 @@ namespace NuevoProyecto.API.Controllers
             var userDto = new UserDto
             {
                 Id = user.Id,
-                Name = user.Name,
+                Name = user.UserName,
                 Email = user.Email
             };
             return Ok(userDto);
@@ -84,7 +90,7 @@ namespace NuevoProyecto.API.Controllers
             return NoContent();
         }
 
-        POST: api/users/login
+        //POST: api/users/login
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login([FromBody] LoginDto loginDto)
         {

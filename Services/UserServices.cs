@@ -2,15 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NuevoProyecto.API.Interface;
+using NuevoProyecto.API.Models;
+using Microsoft.EntityFrameworkCore;
+using NuevoProyecto.API.IServices;
+using NuevoProyecto.API.Data;
+
 
 namespace NuevoProyecto.API.Services
 {
     public class UserServices: IUserService
     {
         private readonly IRepository<Users> _repository;
-        private readonly AplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UserServices(IRepository<Users> repository, AplicationDbContext context)
+        public UserServices(IRepository<Users> repository, ApplicationDbContext context)
         {
             _repository = repository;
             _context = context;
@@ -44,7 +50,7 @@ namespace NuevoProyecto.API.Services
             var user = await _repository.GetByIdAsync(id);
             if (user != null)
             {
-                await _repository.DeleteAsync(user);
+                await _repository.DeleteAsync(user.Id);
             }
         }
 
@@ -59,7 +65,7 @@ namespace NuevoProyecto.API.Services
             var user = await GetByEmailAsync(email);
             if (user == null)
                 return false;
-                return user.Password == password;
+                return user.password == password;
         }
     }
 }
