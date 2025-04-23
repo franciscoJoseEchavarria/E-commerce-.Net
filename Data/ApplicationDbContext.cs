@@ -29,20 +29,8 @@ namespace NuevoProyecto.API.Data
             base.OnModelCreating(modelBuilder); // Añade esta línea
             
             // Configura la relación Order-OrderItem
-            modelBuilder.Entity<Order>()
-                .HasMany(o => o.OrderItems)
-                .WithOne(o => o.Order)
-                .HasForeignKey(o => o.OrderId);
-            
-            // Configura la relación Product-Category
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey("CategoryId");
-                
+              
             // Configura tipos de datos específicos
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Price);
         }
 
        
