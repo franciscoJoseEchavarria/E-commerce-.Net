@@ -12,6 +12,19 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    
+// Register repositories
+builder.Services.AddScoped<IRepository<Users>, UserRepository>();
+
+// Register services
+builder.Services.AddScoped<IUserService, UserServices>();
+
+// Make sure controllers are registered
+builder.Services.AddControllers();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
