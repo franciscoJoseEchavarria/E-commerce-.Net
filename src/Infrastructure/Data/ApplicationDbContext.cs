@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NuevoProyecto.API.Models;
-using Microsoft.EntityFrameworkCore; // Esta importación falta
+using Microsoft.EntityFrameworkCore; // Esta importación falta}
+using NuevoProyecto.API.Core.Entities;
 
 
 
-namespace NuevoProyecto.API.Data
+namespace NuevoProyecto.API.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {

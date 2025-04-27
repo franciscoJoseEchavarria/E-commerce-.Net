@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace NuevoProyecto.API.Models
+namespace NuevoProyecto.API.Core.Entities
 {
     public class Product:BaseEntity
     {

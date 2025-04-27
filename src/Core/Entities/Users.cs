@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NuevoProyecto.API.Models
+namespace NuevoProyecto.API.Core.Entities
 {
     public class Users:BaseEntity
     {
@@ -19,5 +19,7 @@ namespace NuevoProyecto.API.Models
         {
             return !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Email);            
         }
+
+        //ok
     }
 }

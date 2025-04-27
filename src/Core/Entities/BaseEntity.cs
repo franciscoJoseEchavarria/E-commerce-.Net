@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NuevoProyecto.API.Models
+namespace NuevoProyecto.API.Core.Entities
 {
     public abstract class BaseEntity
     {
@@ -21,4 +21,5 @@ namespace NuevoProyecto.API.Models
         // Método abstracto que todas las entidades deben implementar
         public abstract bool IsValid();
     }
+    //ok
 }

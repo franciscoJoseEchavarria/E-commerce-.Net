@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NuevoProyecto.API.Core.Entities;
 
-namespace NuevoProyecto.API.Models
+namespace NuevoProyecto.API.Core.Entities
 {
-    public class OrderItem:BaseEntity
+    public class OrderItem : BaseEntity
     {
         public int OrderId { get; set; }
         public Order Order { get; set; }

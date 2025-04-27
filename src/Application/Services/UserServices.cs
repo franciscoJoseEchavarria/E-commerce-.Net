@@ -1,22 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NuevoProyecto.API.Interface;
-using NuevoProyecto.API.Models;
+
+
 using Microsoft.EntityFrameworkCore;
-using NuevoProyecto.API.IServices;
-using NuevoProyecto.API.Data;
+using NuevoProyecto.API.Infrastructure.Data;
+using NuevoProyecto.API.Core.Interface;
 
-
-namespace NuevoProyecto.API.Services
+namespace NuevoProyecto.API.Application.Services
 {
-    public class UserServices: IUserService
+    public class UserServices: GenericService<Users, UserDto>, IUserService
     {
-        private readonly IRepository<Users> _repository;
-        private readonly ApplicationDbContext _context;
+        private readonly IGenericRepository<Users> _repository;
 
-        public UserServices(IRepository<Users> repository, ApplicationDbContext context)
+        public UserServices(IGenericRepository<Users> repository, ApplicationDbContext context)
         {
             _repository = repository;
             _context = context;

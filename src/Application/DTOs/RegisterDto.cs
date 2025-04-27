@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NuevoProyecto.API.DTO
+namespace NuevoProyecto.API.Application.DTOs
+
 {
-    public class LoginDto
+    public class RegisterDto
     {
+        public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }
