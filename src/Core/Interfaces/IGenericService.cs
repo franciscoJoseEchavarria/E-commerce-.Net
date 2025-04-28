@@ -15,8 +15,8 @@ namespace NuevoProyecto.API.Core.Interface
     {
         Task<IEnumerable<TDto>> GetAllAsync();
         Task<TDto> GetByIdAsync(int id);
-        Task AddAsync(TDto dto);
-        Task UpdateAsync(TDto dto);
+        Task<TDto> AddAsync(TDto dto);
+        Task UpdateAsync(int id, TDto dto);
         Task DeleteAsync(int id);
     }
  

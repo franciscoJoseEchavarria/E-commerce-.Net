@@ -1,65 +1,46 @@
 
 
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using NuevoProyecto.API.Infrastructure.Data;
 using NuevoProyecto.API.Core.Interface;
+using NuevoProyecto.API.Application.Services;
+using NuevoProyecto.API.Core.Entities;
+using NuevoProyecto.API.Application.DTOs;
+using NuevoProyecto.API.Core.Interfaces;
+using BCrypt.Net;
+
+
 
 namespace NuevoProyecto.API.Application.Services
 {
     public class UserServices: GenericService<Users, UserDto>, IUserService
     {
-        private readonly IGenericRepository<Users> _repository;
+        private readonly IUserRepository _userRepository;
 
-        public UserServices(IGenericRepository<Users> repository, ApplicationDbContext context)
+        public UserServices(
+            IGenericRepository<Users> genericRepository,
+            IUserRepository userRepository,
+            IMapper mapper
+        ) : base(genericRepository, mapper)
         {
-            _repository = repository;
-            _context = context;
-        }
-
-        public async Task<IEnumerable<Users>> GetAllAsync()
-        {
-            return await _repository.GetAllAsync();
-        }
-        public async Task<Users> GetByIdAsync(int id)
-        {
-            return await _repository.GetByIdAsync(id);
-        }
-        public async Task AddAsync(Users entity)
-        {
-            if (!entity.IsValid())
-                throw new ArgumentException("Invalid user entity");
-
-            await _repository.AddAsync(entity);
-        }
-        public async Task UpdateAsync(Users entity)
-        {
-            if (!entity.IsValid())
-                throw new ArgumentException("Invalid user entity");
-
-            entity.UpdatedAt = DateTime.UtcNow;
-            await _repository.UpdateAsync(entity);
-        }
-        public async Task DeleteAsync(int id)
-        {
-            var user = await _repository.GetByIdAsync(id);
-            if (user != null)
-            {
-                await _repository.DeleteAsync(user.Id);
-            }
+            _userRepository = userRepository;
         }
 
-        public async Task<Users> GetByEmailAsync(String email)
+        // Método específico para obtener usuario por email
+        public async Task<UserDto> GetByEmailAsync(string email)
         {
-            return await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _userRepository.GetByEmailAsync(email);
+            return _mapper.Map<UserDto>(user);
         }
 
-        public async Task<bool> ValidateCredentialsAsync (String email, String password)
+        // Validar credenciales con BCrypt
+        public async Task<bool> ValidateCredentialsAsync(string email, string password)
         {
-            var user = await GetByEmailAsync(email);
-            if (user == null)
-                return false;
-                return user.password == password;
+            var user = await _userRepository.GetByEmailAsync(email);
+            if (user == null) return false;
+            return BCrypt.Net.BCrypt.Verify(password, user.Password);
         }
+
     }
 }

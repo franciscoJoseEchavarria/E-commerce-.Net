@@ -6,7 +6,7 @@ namespace NuevoProyecto.API.Core.Interface
 {
     public interface IUserService:IGenericService<Users, UserDto>
     {
-        Task<Users> GetByEmailAsync(string email);
+        Task<UserDto> GetByEmailAsync(string email);
         Task<bool> ValidateCredentialsAsync(string email, string password);
     }
 }
