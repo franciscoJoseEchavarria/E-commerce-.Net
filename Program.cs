@@ -1,18 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using NuevoProyecto.API.Data;
-using NuevoProyecto.API.Interface;
-using NuevoProyecto.API.IServices;
-using NuevoProyecto.API.Models;
-using NuevoProyecto.API.Repository;
-using NuevoProyecto.API.Services;
-using NuevoProyecto.API.Application.Mappings;
+using NuevoProyecto.API.src.Infrastructure.Data;
+using NuevoProyecto.API.src.Core.Interfaces;
+using NuevoProyecto.API.src.Application.Services;
+using NuevoProyecto.API.src.Core.Entities;
+using NuevoProyecto.API.src.Infrastructure.Repositories;
+using NuevoProyecto.API.src.Application.Mappings;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 // Registrar AutoMapper con los perfiles de la capa Application
-builder.Services.AddAutoMapper(typeof(UserProfile)); // Asegúrate de usar el namespace correcto
+builder.Services.AddAutoMapper(typeof(NuevoProyecto.API.src.Application.Mappings.UserProfile)); // Asegúrate de usar el namespace correcto
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -28,8 +27,13 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     
+
+
+// Registro de repositorios
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // ✅ Repositorio genérico
 // Register repositories
-builder.Services.AddScoped<IRepository<Users>, UserRepository>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Register services
 builder.Services.AddScoped<IUserService, UserServices>();

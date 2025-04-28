@@ -1,8 +1,11 @@
 
-using NuevoProyecto.API.Core.Entities;
-using NuevoProyecto.API.Application.DTOs;
+using NuevoProyecto.API.src.Core.Entities
+;
+using NuevoProyecto.API.src.Application.DTOs;
 
-namespace NuevoProyecto.API.Core.Interface
+namespace NuevoProyecto.API.src.Core.Interfaces
+
+
 {
     public interface IUserService:IGenericService<Users, UserDto>
     {

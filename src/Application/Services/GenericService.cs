@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using NuevoProyecto.API.Core.Interface; 
-using NuevoProyecto.API.Core.Entities;
-using NuevoProyecto.API.Core.Interfaces;
-using NuevoProyecto.API.Application.DTOs;
+using NuevoProyecto.API.src.Core.Interfaces; 
+using NuevoProyecto.API.src.Core.Entities;
+using NuevoProyecto.API.src.Core.Interfaces;
+using NuevoProyecto.API.src.Application.DTOs;
 
-namespace NuevoProyecto.API.Application.Services
+namespace NuevoProyecto.API.src.Application.Services
 {
     public class GenericService<TEntity, TDto>: IGenericService<TEntity, TDto>
         where TEntity : BaseEntity

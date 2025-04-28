@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using NuevoProyecto.API.Core.Interface;
-using NuevoProyecto.API.Application.DTOs;
-using NuevoProyecto.API.Core.Entities;
+using NuevoProyecto.API.src.Core.Interfaces
 
-namespace NuevoProyecto.API.Web.Controllers
+;
+using NuevoProyecto.API.src.Application.DTOs;
+using NuevoProyecto.API.src.Core.Entities
+;
+
+namespace NuevoProyecto.API.src.Web.Controllers
 {
 
     [ApiController]

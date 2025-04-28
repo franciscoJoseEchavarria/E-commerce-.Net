@@ -2,17 +2,17 @@
 
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using NuevoProyecto.API.Infrastructure.Data;
-using NuevoProyecto.API.Core.Interface;
-using NuevoProyecto.API.Application.Services;
-using NuevoProyecto.API.Core.Entities;
-using NuevoProyecto.API.Application.DTOs;
-using NuevoProyecto.API.Core.Interfaces;
+using NuevoProyecto.API.src.Infrastructure.Data;
+using NuevoProyecto.API.src.Core.Interfaces;
+using NuevoProyecto.API.src.Application.Services;
+using NuevoProyecto.API.src.Core.Entities;
+using NuevoProyecto.API.src.Application.DTOs;
+using NuevoProyecto.API.src.Core.Interfaces;
 using BCrypt.Net;
 
 
 
-namespace NuevoProyecto.API.Application.Services
+namespace NuevoProyecto.API.src.Application.Services
 {
     public class UserServices: GenericService<Users, UserDto>, IUserService
     {

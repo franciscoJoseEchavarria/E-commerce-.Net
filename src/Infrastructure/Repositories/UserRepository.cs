@@ -1,14 +1,20 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using NuevoProyecto.API.Core.Entities;
-using NuevoProyecto.API.Core.Interfaces;
-using NuevoProyecto.API.Infrastructure.Data; 
-using NuevoProyecto.API.Infrastructure.Repositories;
-using NuevoProyecto.API.Core.Interfaces;
+using NuevoProyecto.API.src.Core.Entities
+;
+using NuevoProyecto.API.src.Core.Interfaces
+;
+using NuevoProyecto.API.src.Infrastructure.Data
+; 
+using NuevoProyecto.API.src.Infrastructure.Repositories
+;
+using NuevoProyecto.API.src.Core.Interfaces
+;
 
 
-namespace NuevoProyecto.API.Infrastructure.Repositories
+namespace NuevoProyecto.API.src.Infrastructure.Repositories
+
 {
     public class UserRepository: GenericRepository<Users>,  IUserRepository
     {

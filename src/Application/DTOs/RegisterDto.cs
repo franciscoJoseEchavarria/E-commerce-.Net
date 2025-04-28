@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NuevoProyecto.API.Application.DTOs
+namespace NuevoProyecto.API.src.Application.DTOs
 
 {
     public class RegisterDto

@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using NuevoProyecto.API.Core.Interfaces;
-using NuevoProyecto.API.Core.Entities;
-using NuevoProyecto.API.Infrastructure.Data;
+using NuevoProyecto.API.src.Core.Interfaces
+;
+using NuevoProyecto.API.src.Core.Entities
+;
+using NuevoProyecto.API.src.Infrastructure.Data
+;
 
-namespace NuevoProyecto.API.Infrastructure.Repositories
+namespace NuevoProyecto.API.src.Infrastructure.Repositories
+
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
