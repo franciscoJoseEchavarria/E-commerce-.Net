@@ -42,5 +42,18 @@ namespace NuevoProyecto.API.src.Application.Services
             return BCrypt.Net.BCrypt.Verify(password, user.Password);
         }
 
+    // Método específico para registro
+    public async Task<UserDto> RegisterAsync(RegisterDto registerDto)
+    {
+        // Validaciones adicionales
+        if (registerDto.Password != registerDto.ConfirmPassword)
+            throw new ArgumentException("Las contraseñas no coinciden.");
+
+        var user = _mapper.Map<Users>(registerDto);
+        user.Password = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+        
+        await _userRepository.AddAsync(user);
+        return _mapper.Map<UserDto>(user);
+    }
     }
 }

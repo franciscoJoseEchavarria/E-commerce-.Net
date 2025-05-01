@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using NuevoProyecto.API.src.Core.Interfaces
-
-;
+using NuevoProyecto.API.src.Core.Interfaces;
 using NuevoProyecto.API.src.Application.DTOs;
-using NuevoProyecto.API.src.Core.Entities
-;
+
 
 namespace NuevoProyecto.API.src.Web.Controllers
 {
@@ -47,9 +44,9 @@ namespace NuevoProyecto.API.src.Web.Controllers
 
         // 4. POST: api/users/register
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> RegisterUser([FromBody] UserDto userDto)
+        public async Task<ActionResult<UserDto>> RegisterUser([FromBody] RegisterDto registerDto)
         {
-            var createdUser = await _userService.AddAsync(userDto);
+            var createdUser = await _userService.RegisterAsync(registerDto);
             return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
         }
 

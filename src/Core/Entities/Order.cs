@@ -14,8 +14,8 @@ namespace NuevoProyecto.API.src.Core.Entities
         public string Status { get; set; } = "Pending";
         
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-        //  public Shipping Shipping { get; set; }
-        // public Payment Payment { get; set; }
+        public Shipping Shipping { get; set; }
+         public Payment Payment { get; set; }
         
         public override bool IsValid()
         {

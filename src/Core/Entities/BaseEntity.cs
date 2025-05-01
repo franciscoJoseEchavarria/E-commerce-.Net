@@ -8,19 +8,24 @@ namespace NuevoProyecto.API.src.Core.Entities
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
-        public DateTime CreatedAt { get; set; } = TimeZoneInfo.ConvertTimeFromUtc(
-            DateTime.UtcNow, 
-            TimeZoneInfo.FindSystemTimeZoneById("SA Pacific Standard Time")
-        );
-        public DateTime? UpdatedAt { get; set; } = TimeZoneInfo.ConvertTimeFromUtc(
-            DateTime.UtcNow, 
-            TimeZoneInfo.FindSystemTimeZoneById("SA Pacific Standard Time")
-        );
-        
-        
-        // Método abstracto que todas las entidades deben implementar
-        public abstract bool IsValid();
+    public int Id { get; set; }
+    
+    private DateTime _createdAt = DateTime.UtcNow; // Usa UTC directamente
+    public DateTime CreatedAt 
+    {
+        get => _createdAt;
+        set => _createdAt = DateTime.SpecifyKind(value, DateTimeKind.Utc);
     }
-    //ok
+    
+    private DateTime? _updatedAt;
+    public DateTime? UpdatedAt 
+    {
+        get => _updatedAt;
+        set => _updatedAt = value.HasValue 
+            ? DateTime.SpecifyKind(value.Value, DateTimeKind.Utc) 
+            : null;
+    }
+    
+    public abstract bool IsValid();
+}
 }

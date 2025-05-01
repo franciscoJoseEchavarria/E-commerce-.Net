@@ -26,6 +26,8 @@ namespace NuevoProyecto.API.src.Infrastructure.Repositories
         return await _context.Set<Users>().FirstOrDefaultAsync(u => u.Email == email);
     }
 
+    
+
         
     }
 }

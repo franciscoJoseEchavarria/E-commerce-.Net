@@ -15,6 +15,11 @@ namespace NuevoProyecto.API.src.Application.Mappings
     {
         CreateMap<Users, UserDto>();
         CreateMap<UserDto, Users>();
+        CreateMap<RegisterDto, Users>()
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password));
+                
     }
         
     }

@@ -11,5 +11,6 @@ namespace NuevoProyecto.API.src.Core.Interfaces
     {
         Task<UserDto> GetByEmailAsync(string email);
         Task<bool> ValidateCredentialsAsync(string email, string password);
+        Task <UserDto> RegisterAsync(RegisterDto registerDto);
     }
 }
