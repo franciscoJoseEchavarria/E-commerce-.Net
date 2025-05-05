@@ -8,16 +8,17 @@ using NuevoProyecto.API.src.Core.Entities
 namespace NuevoProyecto.API.src.Core.Interfaces
 
 {
-    public interface IGenericService <TEntity, TDto>
+    public interface IGenericService <TEntity, TDto, TCreateDto>
 
     where TEntity: BaseEntity
     where TDto: class
+    where TCreateDto: class
     
 
     {
         Task<IEnumerable<TDto>> GetAllAsync();
         Task<TDto> GetByIdAsync(int id);
-        Task<TDto> AddAsync(TDto dto);
+        Task<TDto> AddAsync(TCreateDto createDto);
         Task UpdateAsync(int id, TDto dto);
         Task DeleteAsync(int id);
     }

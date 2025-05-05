@@ -7,8 +7,9 @@ using NuevoProyecto.API.src.Core.Entities;
 
 namespace NuevoProyecto.API.src.Core.Interfaces
 {
-    public interface ICategoryService: IGenericService<Category, CategoryDto, CategoryDto>
+    public interface IProductRepository: IGenericRepository<Product>
     {
-        
+                
+
     }
 }

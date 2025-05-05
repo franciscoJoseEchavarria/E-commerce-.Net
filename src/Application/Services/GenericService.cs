@@ -10,9 +10,10 @@ using NuevoProyecto.API.src.Application.DTOs;
 
 namespace NuevoProyecto.API.src.Application.Services
 {
-    public class GenericService<TEntity, TDto>: IGenericService<TEntity, TDto>
+    public class GenericService<TEntity, TDto, TCreateDto>: IGenericService<TEntity, TDto, TCreateDto>
         where TEntity : BaseEntity
         where TDto : class
+        where TCreateDto : class
     {
         
         protected readonly IGenericRepository<TEntity> _repository;
@@ -36,9 +37,9 @@ namespace NuevoProyecto.API.src.Application.Services
             return _mapper.Map<TDto>(entity);
         }
 
-        public virtual async Task <TDto> AddAsync(TDto dto)
+        public virtual async Task <TDto> AddAsync(TCreateDto createDto)
         {
-            var entity = _mapper.Map<TEntity>(dto);
+            var entity = _mapper.Map<TEntity>(createDto);
             await _repository.AddAsync(entity);
             return _mapper.Map<TDto>(entity);
         }

@@ -14,7 +14,7 @@ using BCrypt.Net;
 
 namespace NuevoProyecto.API.src.Application.Services
 {
-    public class UserServices: GenericService<Users, UserDto>, IUserService
+    public class UserServices: GenericService<Users, UserDto, RegisterDto>, IUserService
     {
         private readonly IUserRepository _userRepository;
 

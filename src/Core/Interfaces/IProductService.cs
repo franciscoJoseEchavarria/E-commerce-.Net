@@ -7,7 +7,7 @@ using NuevoProyecto.API.src.Core.Entities;
 
 namespace NuevoProyecto.API.src.Core.Interfaces
 {
-    public interface ICategoryService: IGenericService<Category, CategoryDto, CategoryDto>
+    public interface IProductService : IGenericService<Product, ProductDto, ProductCreateDto>
     {
         
     }
