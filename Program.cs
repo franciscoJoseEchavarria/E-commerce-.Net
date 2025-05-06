@@ -14,6 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Registrar AutoMapper con los perfiles de la capa Application
 builder.Services.AddAutoMapper(typeof(NuevoProyecto.API.src.Application.Mappings.UserProfile)); // Asegúrate de usar el namespace correcto
 builder.Services.AddAutoMapper(typeof(NuevoProyecto.API.src.Application.Mappings.CategoryProfile)); // Asegúrate de usar el namespace correcto
+builder.Services.AddAutoMapper(typeof(NuevoProyecto.API.src.Application.Mappings.ProductProfile)); // Asegúrate de usar el namespace correcto
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -37,9 +40,11 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 // Register services
 builder.Services.AddScoped<IUserService, UserServices>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 // Make sure controllers are registered
 builder.Services.AddControllers();

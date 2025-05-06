@@ -12,7 +12,7 @@ using NuevoProyecto.API.src.Core.Interfaces;
 
 namespace NuevoProyecto.API.src.Application.Services
 {
-    public class CategoryService: GenericService<Category, CategoryDto>, ICategoryService
+    public class CategoryService: GenericService<Category, CategoryDto, CategoryDto>, ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
 

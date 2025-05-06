@@ -15,8 +15,11 @@ namespace NuevoProyecto.API.src.Application.Mappings
         {
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+            
             CreateMap<ProductCreateDto, Product>();
+        
       
+            CreateMap<ProductDto, Product>();
         }
     }
 }
